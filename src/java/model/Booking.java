@@ -1,24 +1,25 @@
 package model;
 
-import java.sql.Timestamp;
-
 public class Booking {
     private int bookingId;
     private int customerId;
     private String pickupLocation;
     private String dropoffLocation;
-    private Timestamp bookingDate;
+    private String bookingDate; // ✅ Store date as String
     private String status;
+    private String vehicleType;
+    private double price;
 
-    public Booking() {}
-
-    public Booking(int bookingId, int customerId, String pickupLocation, String dropoffLocation, Timestamp bookingDate, String status) {
+    // Constructor
+    public Booking(int bookingId, int customerId, String pickupLocation, String dropoffLocation, String bookingDate, String status, String vehicleType, double price) {
         this.bookingId = bookingId;
         this.customerId = customerId;
         this.pickupLocation = pickupLocation;
         this.dropoffLocation = dropoffLocation;
         this.bookingDate = bookingDate;
         this.status = status;
+        this.vehicleType = vehicleType;
+        this.price = price;
     }
 
     // Getters and Setters
@@ -34,9 +35,15 @@ public class Booking {
     public String getDropoffLocation() { return dropoffLocation; }
     public void setDropoffLocation(String dropoffLocation) { this.dropoffLocation = dropoffLocation; }
 
-    public Timestamp getBookingDate() { return bookingDate; }
-    public void setBookingDate(Timestamp bookingDate) { this.bookingDate = bookingDate; }
+    public String getBookingDate() { return bookingDate; }  // ✅ Ensure String type
+    public void setBookingDate(String bookingDate) { this.bookingDate = bookingDate; }  
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public String getVehicleType() { return vehicleType; }
+    public void setVehicleType(String vehicleType) { this.vehicleType = vehicleType; }
+
+    public double getPrice() { return price; }
+    public void setPrice(double price) { this.price = price; }
 }
