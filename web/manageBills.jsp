@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List, model.User, model.Bill, dao.BillDAO" %>
 
-
 <%
     // Ensure the user is logged in and is an admin
     User admin = (User) session.getAttribute("user");
@@ -19,28 +18,29 @@
 <head>
     <title>Manage Bills | MegaCityCab</title>
 
-    <!-- Inline CSS for Styling -->
+    <!-- 🔹 Dark Mode Styling -->
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #74ebd5, #acb6e5);
+            background: #121212;
+            color: white;
             text-align: center;
             margin: 0;
             padding: 0;
         }
 
         .container {
-            width: 70%;
-            margin: 60px auto;
+            width: 80%;
+            margin: 50px auto;
             padding: 30px;
-            background: white;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            background: #1e1e1e;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             text-align: center;
         }
 
         h2 {
-            color: #333;
+            color: #f1c40f;
             font-size: 26px;
             margin-bottom: 20px;
             font-weight: bold;
@@ -50,30 +50,32 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            background: #222;
+            color: white;
         }
 
         th, td {
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid #333;
             text-align: center;
             font-size: 16px;
         }
 
         th {
-            background-color: #007bff;
-            color: white;
+            background-color: #f1c40f;
+            color: black;
             font-weight: bold;
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #2c2c2c;
         }
 
         .btn {
             display: inline-block;
             padding: 10px 15px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
+            background: linear-gradient(135deg, #f1c40f, #d4ac0d);
+            color: black;
             text-decoration: none;
             border-radius: 8px;
             font-size: 14px;
@@ -83,11 +85,12 @@
         }
 
         .btn:hover {
-            background: linear-gradient(135deg, #0056b3, #004095);
+            background: linear-gradient(135deg, #d4ac0d, #a67c00);
         }
 
         .delete-btn {
             background: linear-gradient(135deg, #ff4747, #c40000);
+            color: white;
         }
 
         .delete-btn:hover {
@@ -100,7 +103,7 @@
         <h2>Manage Bills</h2>
 
         <% if (bills.isEmpty()) { %>
-            <p>No bills available.</p>
+            <p style="color: #e74c3c;">No bills available.</p>
         <% } else { %>
             <table>
                 <tr>
@@ -128,4 +131,3 @@
     </div>
 </body>
 </html>
-

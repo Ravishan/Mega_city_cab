@@ -2,21 +2,86 @@
 <html>
 <head>
     <title>Login | MegaCityCab</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #16213e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: white;
+            width: 350px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background: #0f3460;
+            color: white;
+        }
+        input:focus {
+            background: #1f4068;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #e94560;
+            color: white;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #c82333;
+        }
+        .register-link {
+            color: #03a9f4;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        .register-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <div style="width: 300px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); text-align: center;">
-        <h2 style="color: #333;">Login</h2>
-        <form id="loginForm" action="LoginServlet" method="post">
-            <label style="display: block; margin: 10px 0 5px; font-weight: bold;">Username:</label>
-            <input type="text" name="username" id="username" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="LoginServlet" method="post">
+            <label>Username:</label>
+            <input type="text" name="username" required>
 
-            <label style="display: block; margin: 10px 0 5px; font-weight: bold;">Password:</label>
-            <input type="password" name="password" id="password" required style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+            <label>Password:</label>
+            <input type="password" name="password" required>
 
-            <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">Login</button>
+            <button type="submit">Login</button>
         </form>
-        
-        <p style="margin-top: 10px;">New User? <a href="register.jsp" style="color: #007bff; text-decoration: none; font-weight: bold;">Register Here</a></p>
+        <p>New User? <a href="register.jsp" class="register-link">Register Here</a></p>
     </div>
 </body>
 </html>

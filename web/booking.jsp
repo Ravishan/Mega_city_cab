@@ -12,120 +12,74 @@
 <html>
 <head>
     <title>Book a Ride | MegaCityCab</title>
-    <script src="js/booking.js" defer></script>
-    
-    <!-- Inline CSS for Professional Look -->
     <style>
-        /* General Page Styling */
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #74ebd5, #acb6e5);
-            text-align: center;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
         }
-
-        /* Booking Container */
         .container {
-            width: 40%;
-            margin: 60px auto;
-            padding: 30px;
-            background: white;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            background: #1e1e1e;
+            padding: 25px;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
             text-align: center;
-            transition: transform 0.3s ease-in-out;
+            width: 350px;
         }
-
-        .container:hover {
-            transform: scale(1.02);
-        }
-
-        /* Heading */
         h2 {
-            color: #333;
-            font-size: 24px;
             margin-bottom: 20px;
-            font-weight: bold;
+            color: #ffffff;
         }
-
-        /* Form Styling */
-        form {
-            text-align: left;
-            width: 100%;
-            padding: 10px;
-        }
-
-        /* Label */
         label {
             display: block;
-            font-size: 16px;
+            text-align: left;
+            margin: 10px 0 5px;
             font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
+            color: #ddd;
         }
-
-        /* Input Fields */
-        .input-field {
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background: #333;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus, select:focus {
+            background: #444;
+            border: 1px solid #555;
+        }
+        button {
             width: 100%;
             padding: 12px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .input-field:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        /* Button Styling */
-        button {
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        button:hover {
-            background: linear-gradient(135deg, #0056b3, #004095);
-        }
-
-        /* View Bookings Link */
-        .back-link {
-            display: inline-block;
             margin-top: 15px;
-            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .view-bookings {
+            display: block;
+            margin-top: 15px;
             text-decoration: none;
+            color: #00aaff;
             font-weight: bold;
-            font-size: 14px;
         }
-
-        .back-link:hover {
+        .view-bookings:hover {
             text-decoration: underline;
-        }
-
-        /* Error Message */
-        .error-message {
-            color: red;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        /* Success Message */
-        .success-message {
-            color: green;
-            font-size: 14px;
-            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -133,21 +87,39 @@
     <div class="container">
         <h2>Book a Ride</h2>
 
-        <% if (request.getParameter("error") != null) { %>
-            <p class="error-message"><%= request.getParameter("error") %></p>
-        <% } %>
-
-        <form id="bookingForm" action="BookingServlet" method="post">
+        <form action="BookingServlet" method="post">
             <label>Pickup Location:</label>
-            <input type="text" name="pickupLocation" id="pickupLocation" required class="input-field">
+            <input type="text" name="pickupLocation" required>
 
             <label>Dropoff Location:</label>
-            <input type="text" name="dropoffLocation" id="dropoffLocation" required class="input-field">
+            <input type="text" name="dropoffLocation" required>
+
+            <label>Select Vehicle Type:</label>
+            <select name="vehicleType" id="vehicleType" onchange="calculatePrice()">
+                <option value="Economy">Economy - $10</option>
+                <option value="Standard">Standard - $15</option>
+                <option value="Luxury">Luxury - $25</option>
+            </select>
+
+            <label>Estimated Price:</label>
+            <input type="text" id="price" name="price" readonly>
 
             <button type="submit">Book Now</button>
         </form>
 
-        <p><a href="viewBookings.jsp" class="back-link">View My Bookings</a></p>
+        <a href="viewBookings.jsp" class="view-bookings">View My Bookings</a>
     </div>
+
+    <script>
+        function calculatePrice() {
+            var vehicleType = document.getElementById("vehicleType").value;
+            var price = 0;
+            if (vehicleType === "Economy") price = 10;
+            if (vehicleType === "Standard") price = 15;
+            if (vehicleType === "Luxury") price = 25;
+            document.getElementById("price").value = price;
+        }
+    </script>
+
 </body>
 </html>
